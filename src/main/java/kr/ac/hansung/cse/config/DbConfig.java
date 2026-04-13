@@ -39,14 +39,14 @@ public class DbConfig {
     public DataSource dataSource() {
         DriverManagerDataSource ds = new DriverManagerDataSource();
         ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-        ds.setUrl("jdbc:mysql://localhost:3306/productdb" +
-                  "?useSSL=false" +
-                  "&allowPublicKeyRetrieval=true" +
-                  "&serverTimezone=Asia/Seoul" +
-                  "&useUnicode=true" +
-                  "&characterEncoding=UTF-8");
-        ds.setUsername("appuser");
-        ds.setPassword("apppass");
+        ds.setUrl("jdbc:mysql://mysql:3306/productdb" +
+                "?useSSL=false" +
+                "&allowPublicKeyRetrieval=true" +
+                "&serverTimezone=Asia/Seoul" +
+                "&useUnicode=true" +
+                "&characterEncoding=UTF-8");
+        ds.setUsername("root");
+        ds.setPassword("rootpass");
         return ds;
     }
 
