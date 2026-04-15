@@ -136,7 +136,7 @@ public class ProductRepository {
     // 18:25 추가
     public List<Product> findByNameContaining(String keyword) {
         return entityManager.createQuery(
-                        "SELECT p FROM Product p WHERE p.name LIKE :keyword ORDER BY p.id",
+                        "SELECT p FROM Product p LEFT JOIN FETCH p.category WHERE p.name LIKE :keyword ORDER BY p.id",
                         Product.class)
                 .setParameter("keyword", "%" + keyword + "%")
                 .getResultList();

@@ -52,16 +52,17 @@ public class ProductController {
     // ─────────────────────────────────────────────────────────────────
 
     @GetMapping
-    public String listProducts(@RequestParam(required = false) String keyword,
-                               @RequestParam(required = false) Long categoryId,
-                               Model model) {
+    public String listProducts(
+            @RequestParam(required = false) String keyword,
+            @RequestParam(required = false) String categoryId,
+            Model model) {
 
         List<Product> products;
 
         if (keyword != null && !keyword.isBlank()) {
             products = productService.searchByName(keyword);
-        } else if (categoryId != null) {
-            products = productService.searchByCategory(categoryId);
+        } else if (categoryId != null && !categoryId.isBlank()) {
+            products = productService.searchByCategory(Long.parseLong(categoryId));
         } else {
             products = productService.getAllProducts();
         }
